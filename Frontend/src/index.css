@@ -1,0 +1,119 @@
+* {
+  margin: 0%;
+  padding: 0;
+  box-sizing: border-box;
+  /* background-color: rgba(117, 112, 112, 0.274); */
+}
+
+body {
+  height: 100vh;
+  background-image: url("https://img.freepik.com/premium-photo/watercolor-light-peach-color-background-texture_145343-657.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+}
+/* // <uniquifier>: Use a unique and descriptive class name */
+
+.dancing-script {
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+.jacques-francois-shadow-regular {
+  font-family: "Jacques Francois Shadow", serif;
+  font-weight: 600;
+  font-style: normal;
+  /* color: rgb(295, 150, 0); */
+  /* color: rgb(0, 0, 0); */
+}
+.playfair-display {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: bolder;
+  font-style: normal;
+}
+
+.button {
+  /* transition-property: all;
+  transition-duration: 0.5s;
+  transition-timing-function: linear; */
+  padding: 7px 20px;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bolder;
+  border: 2px solid rgb(295, 150, 0);
+  color: rgb(295, 150, 0);
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.button:hover {
+  /* width: 200px;
+  height: 70px;
+  font-size: 30px; */
+  color: white;
+  background-color: rgb(295, 150, 0);
+  border: 2px solid white;
+  cursor: pointer;
+}
+/* upload Meal */
+.UButton {
+  padding: 7px 20px;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bolder;
+  border: 2px solid #fff;
+  color: #fff;
+  background-color: rgb(295, 150, 0);
+  cursor: pointer;
+}
+.UButton:hover {
+  color: rgb(295, 150, 0);
+  background-color: #fff;
+  border: 2px solid rgb(295, 150, 0);
+  cursor: pointer;
+}
+
+/* popular Menu Categories */
+
+.list {
+  border: 2px solid rgb(295, 150, 0);
+  padding: 15px 35px;
+  border-radius: 30px;
+  color: rgb(295, 150, 0);
+  font-size: 25px;
+}
+
+.list:hover {
+  border: 2px solid white;
+  color: white;
+  background-color: rgb(295, 150, 0);
+  cursor: pointer;
+}
+
+/* Navbar Links Hover */
+.nav-link {
+  position: relative;
+  transition: all 0.4s;
+}
+
+.nav-link:hover {
+  color: black;
+}
+
+.nav-link::after {
+  content: "";
+  height: 2px;
+  width: 100%;
+  background-color: rgb(295, 150, 0);
+  display: block;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.nav-link:hover::after {
+  opacity: 1;
+}
