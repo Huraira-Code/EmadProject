@@ -1,6 +1,9 @@
 import express, { urlencoded } from "express";
 import cors from "cors";
 const app = express();
+import connectDatabase from "./db/DB.js"; // Import the MongoDB connection
+connectDatabase();
+
 // Default route to welcome users
 app.get("/", (req, res) => {
   res.status(200).send("Welcome to Restaurant");
