@@ -22,4 +22,4 @@ app.use("/api/v1/", AdminRouter);
 app.use("/api/v1/", CheckoutRouter);
 app.use("/api/v1/", EmailRouter);
 
-export { app };
+export default app;
