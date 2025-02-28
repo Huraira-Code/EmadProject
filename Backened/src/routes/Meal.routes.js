@@ -17,7 +17,9 @@ router
 //Integrated On Frontend UploadMeal.jsx Component
 router.route("/getMeal").get(GetMealCard);
 //Integrated On Frontend UploadMeal.jsx Component
-router.route("/updateMeal/:id").put(upload.fields([{ name: "image", maxCount: 1 }]), UpdateMealCard);
+router
+  .route("  ")
+  .put(upload.fields([{ name: "image", maxCount: 1 }]), UpdateMealCard);
 //Integrated On Frontend UploadMeal.jsx Component
 router.route("/delMeal/:id").delete(DeleteMealCard);
 export default router;

@@ -40,6 +40,8 @@ import FastfoodIcon from "@mui/icons-material/Fastfood";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import AcceptedAndRejectedOrder from "./AcceptedAndRejectedOrder";
 import AcceptedAndRejectedReservation from "./AcceptedAndRejectedReservation";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
+import UploadDeals from "./UploadDeals";
 const drawerWidth = 240;
 
 const routes1 = [
@@ -48,6 +50,12 @@ const routes1 = [
     path: "items",
     element: <UploadMeal />,
     icon: <RestaurantIcon />,
+  },
+  {
+    name: "Deals",
+    path: "deals",
+    element: <UploadDeals />,
+    icon: <MenuBookIcon />,
   },
   {
     name: "Orders",

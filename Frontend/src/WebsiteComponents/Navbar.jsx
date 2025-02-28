@@ -12,7 +12,7 @@ import {
 import logo2 from "../Images/logo.png";
 const Navbar = () => {
   const { addToCart } = useSelector((state) => state.addToCartReducer);
-  // console.log(addToCart, "Navbar");
+  console.log(addToCart, "Navbar");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const Navbar = () => {
   const stock = 12;
   return (
     <>
-      <Modal size="md" isOpen={cart} toggle={() => setModal(!cart)}>
+      <Modal size="md" isOpen={cart} toggle={() => setCart(!cart)}>
         <ModalHeader toggle={() => setCart(!cart)}>
           <h1
             className="jacques-francois-shadow-regular"
@@ -33,7 +33,7 @@ const Navbar = () => {
           {addToCart.length !== 0 ? (
             addToCart.map((data, index) => {
               // console.log(addToCart, "data");
-              // console.log(data, "data");
+              console.log(data.dealTitle, "data");
 
               return (
                 <>
@@ -55,13 +55,17 @@ const Navbar = () => {
                       <div className="col-12 col-md-6 mt-3">
                         <div>
                           <h4 className="jacques-francois-shadow-regular text-center">
-                            {data.mealName}
+                            {data.mealName
+                              ? data.mealName
+                              : `Deal No # ${data.dealNumber}`}
                           </h4>
+
                           <div>
                             <h5 className="pt-1 text-center fw-bold">
                               {data.count}
                               <span className="fs-5 fw-light"> X</span>{" "}
-                              {data.Price}$ = {data.Price * data.count}$
+                              {data.Price || data.dealPrice}$ ={" "}
+                              {(data.Price || data.dealPrice) * data.count}$
                             </h5>
                           </div>
                           <div className="text-center">
@@ -159,6 +163,18 @@ const Navbar = () => {
                   })}
                 >
                   Menu
+                </NavLink>
+              </li>
+
+              <li className="nav-item me-3">
+                <NavLink
+                  className="nav-link"
+                  to="/deals"
+                  style={({ isActive }) => ({
+                    color: isActive ? "rgb(295, 150, 0)" : "black",
+                  })}
+                >
+                  Deals
                 </NavLink>
               </li>
 

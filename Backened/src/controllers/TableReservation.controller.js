@@ -16,6 +16,7 @@ const TableData = asyncHandler(async (req, res) => {
     ReservationDay,
     ReservationTime,
     partySize,
+    ReservationMeal,
   } = req.body;
 
   try {
@@ -46,6 +47,7 @@ const TableData = asyncHandler(async (req, res) => {
       ReservationDay,
       ReservationTime,
       partySize,
+      ReservationMeal,
     });
 
     return res

@@ -3,7 +3,7 @@ import React from "react";
 const Cont = () => {
   return (
     <>
-      <div className="container" style={{ marginTop: "120px" }}>
+      <div className="container" style={{ marginTop: "100px" }}>
         <section className="row">
           <div className="col-12">
             <div className="text-center">

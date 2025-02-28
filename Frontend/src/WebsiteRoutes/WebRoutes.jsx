@@ -12,6 +12,8 @@ import SuccessCheckout from "../WebsiteComponents/SuccessCheckout";
 import ErrorCheckout from "../WebsiteComponents/ErrorCheckout";
 import WelcomePage from "../AdminPages/WelcomePage";
 import OrderSuccess from "../WebsitePages/OrderSuccess";
+import Deals from "../WebsitePages/Deals";
+import Deals_Meals from "../WebsitePages/Deals_Meals";
 
 const WebRoutes = () => {
   return (
@@ -19,7 +21,9 @@ const WebRoutes = () => {
       <Routes>
         <Route index element={<Home />} />
         <Route path="/menu" element={<Menu />} />
+        <Route path="/deals" element={<Deals />} />
         <Route path="/about" element={<Aboout />} />
+        <Route path="/dealMeal" element={<Deals_Meals />} />
         <Route path="/reservation" element={<Reservation />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/admin" element={<AdminForm />} />

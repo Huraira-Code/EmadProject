@@ -181,10 +181,11 @@ const CheckoutForm = () => {
       setSummary(true);
     }
   };
+
   let subTotal = 0;
   if (addToCart.length > 0) {
     addToCart.forEach((data) => {
-      subTotal += data.Price * data.count;
+      subTotal += (data.Price || data.dealPrice) * data.count;
     });
   }
   return (
@@ -219,9 +220,12 @@ const CheckoutForm = () => {
                   <div key={index}>
                     <div className="mt-2 d-flex justify-content-between playfair-display">
                       <h5 className="ms-4">
-                        {data.mealName} (Qty : {data.count})
+                        {data.mealName || `Deal No.${data.dealNumber}`} (Qty :{" "}
+                        {data.count})
                       </h5>
-                      <h5 className="me-4">{data.Price * data.count}.00$</h5>
+                      <h5 className="me-4">
+                        {data.Price || data.dealPrice * data.count}.00$
+                      </h5>
                     </div>
                   </div>
                 </>

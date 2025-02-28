@@ -1,8 +1,11 @@
 import { Card, CardContent } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { clearCart } from "../Store/AddToCart";
+import { useDispatch } from "react-redux";
 
 const SuccessCheckout = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   return (
     <>
@@ -33,7 +36,10 @@ const SuccessCheckout = () => {
             <div className="mt-4">
               <button
                 className="btn btn-success px-5 py-2 fs-5"
-                onClick={() => navigate("/")}
+                onClick={() => {
+                  dispatch(clearCart());
+                  navigate("/");
+                }}
               >
                 Go Back
               </button>

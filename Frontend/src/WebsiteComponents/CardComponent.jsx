@@ -46,7 +46,7 @@ const CardComponent = () => {
         {Array.isArray(allProduct) &&
           allProduct.map((data, index) => {
             return (
-              <div key={index} className="col-12 col-md-4">
+              <div key={index} className="col-12 col-sm-6 col-md-4">
                 <div
                   style={{
                     border: "2px solid #fff",
@@ -56,12 +56,12 @@ const CardComponent = () => {
                     boxShadow: "5px 5px 0px 0px rgb(295, 150, 0)",
                   }}
                 >
-                  <div className="text-center pt-4">
+                  <div className="text-center pt-2">
                     <img
                       style={{ borderRadius: "100px" }}
                       src={data.image}
-                      height={250}
-                      width={250}
+                      height={210}
+                      width={210}
                       alt={data.title || "No Title"}
                     />
                     <h2 className="jacques-francois-shadow-regular pt-4">
@@ -73,8 +73,6 @@ const CardComponent = () => {
                       className="pt-3"
                       style={{ fontSize: "17px", fontWeight: "lighter" }}
                     >
-                      {/* Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Illum, laudantium? */}
                       {data.Description}
                     </p>
                     <div className="d-flex justify-content-around pb-5 pt-4 ">

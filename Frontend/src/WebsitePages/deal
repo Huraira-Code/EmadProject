@@ -1,0 +1,249 @@
+<>
+    //   {/* cart Modal start*/}
+    {/* //   <Modal size="md" isOpen={modal} toggle={() => setModal(!modal)}>
+    //     <ModalHeader toggle={() => setModal(!modal)}>
+    //       <h1 */}
+    {/* //         className="jacques-francois-shadow-regular"
+    //         style={{ color: "rgb(295, 150, 0)" }} */}
+    {/* //       > */}
+    //         Reservation Order Detail
+    {/* //       </h1> */}
+    {/* //     </ModalHeader> */}
+    {/* //     <ModalBody>
+    //       {ReservationCart.length !== 0 ? (
+    //         ReservationCart.map((e, i) => {
+    //           return (
+    //             <>
+    //               <div className="container" key={i}>
+    //                 <section className="row">
+    //                   <div className="col-12 col-md-6 mt-3">
+    //                     <div>
+    //                       <img
+    //                         src={e.image}
+    //                         width={200}
+    //                         height={180}
+    //                         alt={e.mealName}
+    //                         style={{
+    //                           borderRadius: "40px",
+    //                         }}
+    //                       />
+    //                     </div>
+    //                   </div>
+    //                   <div className="col-12 col-md-6 mt-3">
+    //                     <div>
+    //                       <h4 className="jacques-francois-shadow-regular text-center">
+    //                         {e.mealName
+    //                           ? e.mealName
+    //                           : `Deal No # ${e.dealNumber}`}
+    //                       </h4>
+
+    //                       <div>
+    //                         <h5 className="pt-1 text-center fw-bold">
+    //                           {e.count}
+    //                           <span className="fs-5 fw-light"> X</span>{" "}
+    //                           {e.Price || e.dealPrice}$ ={" "}
+    //                           {e.count * (e.Price || e.dealPrice)}$
+    //                         </h5>
+    //                       </div>
+    //                       <div className="text-center">
+    //                         <button
+    //                           className=" button"
+    //                           onClick={() => {
+    //                             e.count > 1
+    //                               ? dispatch(ReservationCartDecrement(e._id))
+    //                               : dispatch(removeReservationCart(e));
+    //                           }}
+    //                         >
+    //                           -
+    //                         </button>
+    //                         <button
+    //                           className="ms-3 button"
+    //                           onClick={() => {
+    //                             e.count < stock
+    //                               ? dispatch(ReservationCartIncrement(e._id))
+    //                               : setCount(stock);
+    //                           }}
+    //                         >
+    //                           +
+    //                         </button>
+    //                       </div>
+    //                     </div>
+    //                   </div>
+    //                 </section>
+    //               </div>
+    //             </>
+    //           );
+    //         })
+    //       ) : (
+    //         <h1
+    //           className="d-flex justify-content-center align-items-center jacques-francois-shadow-regular "
+    //           style={{ color: "grey", margin: "80px 0px 80px 0px" }}
+    //         >
+    //           Your Cart is Empty
+    //         </h1>
+    //       )}
+
+    //       {ReservationCart.length !== 0 && (
+    //         <div className="d-flex justify-content-center align-items-center mt-5">
+    //           <button
+    //             className="button"
+    //             onClick={() => {
+    //               setTransfer(true); // Second function call
+    //             }}
+    //           >
+    //             Checkout
+    //           </button>
+    //         </div>
+    //       )}
+    //     </ModalBody>
+    //   </Modal>
+    //   {transfer && (
+    //     <ReservationData
+    //       modal={secondModal}
+    //       date={date}
+    //       time={time} // Pass formatted AM/PM time
+    //       size={size}
+    //       day={day} // Pass day of the week
+    //       setModal={setSecondModal}
+    //     />
+    //   )}
+    //   {/* cart Modal end*/}
+    //   <div className="container" style={{ marginTop: "100px" }}>
+    //     <section className="row">
+    //       <div className="col-12">
+    //         <div className="text-end">
+    //           <button className="button" onClick={() => setModal(!modal)}>
+    //             Cart {ReservationCart.length}
+    //           </button>
+    //         </div>
+    //         {/* Title Section */}
+    //         <div className="text-center">
+    //           <h1
+    //             className="jacques-francois-shadow-regular"
+    //             style={{ fontSize: "60px", wordSpacing: "20px" }}
+    //           >
+    //             <span style={{ color: "rgb(295, 150, 0)" }}>Order</span> Your
+    //             Favourite{" "}
+    //             <span style={{ color: "rgb(295, 150, 0)" }}>Meal</span> With
+    //             Reservation
+    //           </h1>
+    //         </div>
+
+    //         {/* Menu Categories */}
+    //         <div style={{ marginTop: "50px" }}>
+    //           <ul className="list-unstyled d-flex flex-column flex-md-row justify-content-center align-items-center fs-5 dancing-script">
+    //             <li
+    //               className="list mb-3 mb-md-0 mx-md-3"
+    //               onClick={() => setRender(false)}
+    //             >
+    //               Meal
+    //             </li>
+    //             <li
+    //               className="list mb-3 mb-md-0 mx-md-3"
+    //               onClick={() => setRender(true)}
+    //             >
+    //               Deals
+    //             </li>
+    //           </ul>
+    //         </div>
+    //       </div>
+    //     </section>
+    //   </div>
+    //   {!render ? (
+    //     <div className="container">
+    //       <div className="row">
+    //         {Array.isArray(allProduct) &&
+    //           allProduct.map((data, index) => {
+    //             return (
+    //               <div key={index} className="col-12 col-sm-6 col-md-4">
+    //                 <div
+    //                   style={{
+    //                     border: "2px solid #fff",
+    //                     borderRadius: "50px",
+    //                     marginTop: "50px",
+    //                     backgroundColor: "#fff",
+    //                     boxShadow: "5px 5px 0px 0px rgb(295, 150, 0)",
+    //                   }}
+    //                 >
+    //                   <div className="text-center pt-2">
+    //                     <img
+    //                       style={{ borderRadius: "100px" }}
+    //                       src={data.image}
+    //                       height={200}
+    //                       width={200}
+    //                       alt={data.title || "No Title"}
+    //                     />
+    //                     <h2 className="jacques-francois-shadow-regular pt-4">
+    //                       {data.mealName
+    //                         ? data.mealName.substring(0, 14) + "..."
+    //                         : "No Title"}
+    //                     </h2>
+    //                     <p
+    //                       className="pt-3"
+    //                       style={{ fontSize: "17px", fontWeight: "lighter" }}
+    //                     >
+    //                       {data.Description}
+    //                     </p>
+    //                     <div className="d-flex justify-content-around pb-5 pt-4 ">
+    //                       <h3 className="pt-2 fw-bold">${data.Price}.00</h3>
+    //                       <button
+    //                         className="button"
+    //                         // onClick={() => addToCart(data)}
+    //                         onClick={() => {
+    //                           dispatch(addCartToReservatioin(data)); // Add item to the cart
+    //                         }}
+    //                       >
+    //                         Add To Cart
+    //                       </button>
+    //                     </div>
+    //                   </div>
+    //                 </div>
+    //               </div>
+    //             );
+    //           })}
+    //       </div>
+    //     </div>
+    //   ) : (
+    //     <div className="container mt-4">
+    //       <section className="row">
+    //         {data.map((deal, id) => (
+    //           <div
+    //             key={id}
+    //             className="col-12 col-sm-6 col-md-4 text-center text-white jacques-francois-shadow-regular"
+    //           >
+    //             <h5
+    //               style={{
+    //                 fontSize: "30px",
+    //                 color: "rgb(295, 150, 0)",
+    //                 fontWeight: "bolder",
+    //               }}
+    //             >
+    //               Deal No <span className="text-dark"># {deal.dealNumber}</span>
+    //             </h5>
+    //             <div
+    //               className="border border-1 border-warning-subtle rounded-circle py-5"
+    //               style={{ backgroundColor: "rgb(295, 150, 0)" }}
+    //             >
+    //               <h3 className="fw-bolder text-dark">{deal.dealTitle}</h3>
+
+    //               {deal.dealItems.map((e, i) => (
+    //                 <h5 key={i}>{e}</h5>
+    //               ))}
+    //               <h5 className="text-dark">
+    //                 Rs : <span className="fw-bold fs-4">{deal.dealPrice}</span>
+    //               </h5>
+    //               <button
+    //                 className="UButton mt-2"
+    //                 onClick={() => {
+    //                   dispatch(addCartToReservatioin(deal)); // Add item to the cart
+    //                 }}
+    //               >
+    //                 Add To Cart
+    //               </button>
+    //             </div>
+    //           </div>
+    //         ))}
+    //       </section>
+    //     </div>
+    //   )}
+    // </> */}

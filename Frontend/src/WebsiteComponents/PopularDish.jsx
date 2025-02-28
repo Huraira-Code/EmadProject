@@ -7,7 +7,7 @@ const PopularDish = () => {
 
   return (
     <>
-      <div className="container" style={{ marginTop: "200px" }}>
+      {/* <div className="container" style={{ marginTop: "200px" }}>
         <section className="row">
           <div className="col-12 col-md-6" data-aos="fade-right">
             <div>
@@ -43,6 +43,44 @@ const PopularDish = () => {
                 </button>
               </div>
             </div>
+          </div>
+        </section>
+      </div> */}
+      <div className="container mt-5">
+        <section className="row align-items-center text-center text-md-start">
+          {/* Image Section */}
+          <div
+            className="col-12 col-md-6 d-flex justify-content-center"
+            data-aos="fade-right"
+          >
+            <img
+              src={Popular}
+              className="img-fluid"
+              alt="Popular Dish"
+              style={{ maxWidth: "100%", height: "auto" }}
+            />
+          </div>
+
+          {/* Text Section */}
+          <div className="col-12 col-md-6 px-md-4" data-aos="fade-left">
+            <h1
+              className="jacques-francois-shadow-regular"
+              style={{ fontSize: "70px" }}
+            >
+              Our Most Popular Dish
+            </h1>
+            <p className="fs-5 pt-3">
+              This dish is full of flavor and nutrition! Quinoa is a complete
+              protein, providing all the essential amino acids your body needs,
+              and is also a good source of fiber.
+            </p>
+            <button
+              className="button dancing-script"
+              style={{ fontSize: "25px", marginTop: "20px" }}
+              onClick={() => navigate("/menu")}
+            >
+              Order Now
+            </button>
           </div>
         </section>
       </div>

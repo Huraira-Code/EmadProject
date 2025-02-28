@@ -1,5 +1,6 @@
 import express, { urlencoded } from "express";
 import cors from "cors";
+
 const app = express();
 
 app.use(express.json({ limit: "16kb" }));
@@ -14,6 +15,7 @@ import TableReservationRouter from "./routes/TableReservation.routes.js";
 import AdminRouter from "./routes/Admin.routes.js";
 import CheckoutRouter from "./routes/Checkout.routes.js";
 import EmailRouter from "./routes/Email.routes.js";
+import DealRouter from "./routes/Deal.routes.js";
 
 app.use("/api/v1/", MealRouter);
 app.use("/api/v1/", ContactRouter);
@@ -21,5 +23,6 @@ app.use("/api/v1/", TableReservationRouter);
 app.use("/api/v1/", AdminRouter);
 app.use("/api/v1/", CheckoutRouter);
 app.use("/api/v1/", EmailRouter);
+app.use("/api/v1/", DealRouter);
 
 export { app };

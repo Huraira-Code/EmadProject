@@ -8,8 +8,15 @@ import axios from "axios";
 import { BASE_URL } from "../Base_URL/BASE_URL";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useSelector } from "react-redux";
 
 const ReservationData = ({ modal, setModal, date, time, size, day }) => {
+  console.log(date, day, time, modal, setModal, "reservation data");
+  const { ReservationCart } = useSelector(
+    (state) => state.ReservationCartReducer
+  );
+  // console.log(ReservationCart, "reservationCart");
+
   const [detail, setDetail] = useState(false);
   const [fullName, setFullName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -69,6 +76,7 @@ const ReservationData = ({ modal, setModal, date, time, size, day }) => {
       ReservationDay: day,
       ReservationTime: time,
       partySize: size,
+      ReservationMeal: ReservationCart || null,
     };
     // console.log("ReservatinData==>", ReservatinData);
 
@@ -206,21 +214,7 @@ const ReservationData = ({ modal, setModal, date, time, size, day }) => {
                       fontSize: "15px",
                     }}
                   />
-                  {/* <input
-                    type="text"
-                    placeholder="Select an Occasion"
-                    value={occassion}
-                    onChange={(e) => setOccassion(e.target.value)}
-                    style={{
-                      padding: "10px",
-                      marginBottom: "10px",
-                      background: "transparent",
-                      width: "100%",
-                      borderRadius: "10px",
-                      border: "2px solid rgb(295, 150, 0)",
-                      fontSize: "15px",
-                    }}
-                  /> */}
+
                   <select
                     value={occassion}
                     onChange={(e) => setOccassion(e.target.value)}

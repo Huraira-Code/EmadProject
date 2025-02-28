@@ -42,6 +42,9 @@ const TableData = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    ReservationMeal: {
+      type: Array,
+    },
   },
   { timestamps: true }
 );
