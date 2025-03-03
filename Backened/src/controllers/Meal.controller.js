@@ -1,4 +1,3 @@
-import { log } from "console";
 import { Meal } from "../models/Meal.model.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
@@ -32,8 +31,8 @@ const MealCard = asyncHandler(async (req, res) => {
   }
   //upload on Cloudinary
   const image = await uploadOnCloudinary(imageLocalPath);
-  if (!image) {
-    throw new ApiError(400, "image field is required...");
+  if (!image.url) {
+    throw new ApiError(400, "Failed to upload Image...");
   }
   //Sending to Database
   const meal = await Meal.create({

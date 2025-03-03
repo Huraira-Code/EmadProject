@@ -54,7 +54,7 @@ const TotalOrders = () => {
   const getOrders = async () => {
     try {
       const res = await axios.get(`${BASE_URL}/getcheckout`);
-      // console.log("get_Order", res.data.data);
+      console.log("get_Order", res.data.data);
       setMeal(res.data.data);
     } catch (error) {
       notifyError(error.message);
@@ -144,6 +144,7 @@ const TotalOrders = () => {
       .includes(searchTerm.toLowerCase())
   );
 
+  let subTotal = 0;
   return (
     <>
       {/* Are you sure modal */}
@@ -295,6 +296,9 @@ const TotalOrders = () => {
                     <th scope="col">#</th>
                     <th scope="col">Order No.</th>
                     <th scope="col">Name</th>
+                    <th scope="col">Order</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
                     <th scope="col">Phone No.</th>
                     <th scope="col">Order Date</th>
                     <th scope="col">Order Time</th>
@@ -316,6 +320,42 @@ const TotalOrders = () => {
                         <td className="pt-3">
                           {e.firstName + " " + e.lastName}
                         </td>
+                        <td className="pt-3">
+                          {e.orderItems.map((e, i) => {
+                            return (
+                              <div key={i}>
+                                {e.title}
+                                <hr
+                                  style={{
+                                    border: "0.5px solid #ccc",
+                                    margin: "5px 0",
+                                  }}
+                                />
+                              </div>
+                            );
+                          })}
+                        </td>
+                        <td className="pt-3 text-center">
+                          {e.orderItems.map((e, i) => {
+                            return (
+                              <div key={i}>
+                                {e.quantity}
+                                <hr
+                                  style={{
+                                    border: "0.5px solid #ccc",
+                                    margin: "5px 0",
+                                  }}
+                                />
+                              </div>
+                            );
+                          })}
+                        </td>
+                        <td className="pt-3">
+                          {e.orderItems.reduce((subTotal, a) => {
+                            return subTotal + a.price * a.quantity;
+                          }, 0)}
+                          $
+                        </td>
                         <td className="pt-3">{e.phoneNumber}</td>
                         <td className="pt-3">{createdAtDate}</td>
                         <td className="pt-3">
@@ -330,7 +370,7 @@ const TotalOrders = () => {
                           </button>
                           <button
                             onClick={() => rejectedOrder(e._id)}
-                            className="btn btn-danger ms-1"
+                            className="btn btn-danger mt-1"
                           >
                             Rejected
                           </button>

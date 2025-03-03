@@ -20,7 +20,7 @@ const Navbar = () => {
   const stock = 12;
   return (
     <>
-      <Modal size="md" isOpen={cart} toggle={() => setCart(!cart)}>
+      {/* <Modal size="md" isOpen={cart} toggle={() => setCart(!cart)}>
         <ModalHeader toggle={() => setCart(!cart)}>
           <h1
             className="jacques-francois-shadow-regular"
@@ -65,7 +65,7 @@ const Navbar = () => {
                               {data.count}
                               <span className="fs-5 fw-light"> X</span>{" "}
                               {data.Price || data.dealPrice}$ ={" "}
-                              {(data.Price || data.dealPrice) * data.count}$
+                              {data.Price || data.dealPrice * data.count}$
                             </h5>
                           </div>
                           <div className="text-center">
@@ -101,6 +101,84 @@ const Navbar = () => {
             <h1
               className="d-flex justify-content-center align-items-center jacques-francois-shadow-regular "
               style={{ color: "grey", margin: "80px 0px 80px 0px" }}
+            >
+              Your Cart is Empty
+            </h1>
+          )}
+
+          {addToCart.length !== 0 && (
+            <div className="d-flex justify-content-center align-items-center mt-5">
+              <button className="button" onClick={() => navigate("/checkout")}>
+                Checkout
+              </button>
+            </div>
+          )}
+        </ModalBody>
+      </Modal> */}
+      <Modal size="md" isOpen={cart} toggle={() => setCart(!cart)}>
+        <ModalHeader toggle={() => setCart(!cart)}>
+          <h1
+            className="jacques-francois-shadow-regular text-center"
+            style={{ color: "rgb(295, 150, 0)" }}
+          >
+            Order Detail
+          </h1>
+        </ModalHeader>
+        <ModalBody>
+          {addToCart.length !== 0 ? (
+            addToCart.map((data, index) => (
+              <div className="container" key={index}>
+                <section className="row">
+                  <div className="col-12 col-md-6 mt-3 text-center">
+                    <img
+                      src={data.image}
+                      className="img-fluid rounded"
+                      style={{ borderRadius: "40px" }}
+                      alt={data.mealName}
+                    />
+                  </div>
+                  <div className="col-12 col-md-6 mt-3 text-center">
+                    <h4 className="jacques-francois-shadow-regular">
+                      {data.mealName
+                        ? data.mealName
+                        : `Deal No # ${data.dealNumber}`}
+                    </h4>
+                    <h5 className="pt-1 fw-bold">
+                      {data.count}
+                      <span className="fs-5 fw-light"> X </span>
+                      {data.Price || data.dealPrice}$ ={" "}
+                      {data.count * (data.Price || data.dealPrice)}$
+                    </h5>
+                    <div>
+                      <button
+                        className="button"
+                        onClick={() =>
+                          data.count > 1
+                            ? dispatch(cartDecrement(data._id))
+                            : dispatch(removeAddToCart(data))
+                        }
+                      >
+                        -
+                      </button>
+                      <button
+                        className="ms-3 button"
+                        onClick={() =>
+                          data.count < stock
+                            ? dispatch(cartIncrement(data._id))
+                            : setCount(stock)
+                        }
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            ))
+          ) : (
+            <h1
+              className="d-flex justify-content-center align-items-center jacques-francois-shadow-regular text-center"
+              style={{ color: "grey", margin: "80px 0px" }}
             >
               Your Cart is Empty
             </h1>

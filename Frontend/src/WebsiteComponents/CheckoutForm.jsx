@@ -5,13 +5,15 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import { loadStripe } from "@stripe/stripe-js";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import { Modal, ModalBody, ModalHeader, Row } from "reactstrap";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { BASE_URL } from "../Base_URL/BASE_URL";
 import { useNavigate } from "react-router-dom";
+import { clearCart } from "../Store/AddToCart";
+import { clearReservationCart } from "../Store/ReservationCart";
 const CheckoutForm = () => {
   const [selectedValue, setSelectedValue] = useState("");
   const { addToCart } = useSelector((state) => state.addToCartReducer);
@@ -49,7 +51,7 @@ const CheckoutForm = () => {
       progress: undefined,
       theme: "dark",
     });
-
+  const dispatch = useDispatch();
   const OrderPlaced = async (e) => {
     e.preventDefault();
     // console.log("Order Placed");
@@ -104,9 +106,12 @@ const CheckoutForm = () => {
           price: orderItem.Price,
         })),
       });
+
       // console.log("res", res);
       notifySuccess("🦄 Your Order Placed Successfully");
       if (res) {
+        dispatch(clearCart());
+        dispatch(clearReservationCart());
         navigate("/orderSuccess");
       }
     } catch (error) {

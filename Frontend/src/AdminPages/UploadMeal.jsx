@@ -58,6 +58,60 @@ const UploadMeal = () => {
     });
 
   //Add Product Function
+  // const addProduct = async (e) => {
+  //   e.preventDefault();
+  //   if (
+  //     !(
+  //       mealCategory &&
+  //       mealTitle &&
+  //       mealDescription &&
+  //       mealPrice &&
+  //       meal_id &&
+  //       mealImage
+  //     )
+  //   ) {
+  //     notifyError("🦄 Fill all the fields!");
+  //     return;
+  //   }
+  //   setIsLoading(true);
+  //   // let mealData = {
+  //   //   mealCategory,
+  //   //   mealDescription,
+  //   //   mealImage,
+  //   //   mealPrice,
+  //   //   meal_id,
+  //   //   mealTitle,
+  //   // };
+  //   const formData = new FormData();
+  //   formData.append("mealCategory", mealCategory);
+  //   formData.append("mealDescription", mealDescription);
+  //   formData.append("mealImage", mealImage); // Make sure mealImage is a File Object
+  //   formData.append("mealPrice", mealPrice);
+  //   formData.append("meal_id", meal_id);
+  //   formData.append("mealTitle", mealTitle);
+  //   console.log("mealData", mealData);
+  //   try {
+  //     const res = await axios.post(`${BASE_URL}/meal`, formData, {
+  //       headers: {
+  //         "Content-Type": "multipart/form-data",
+  //       },
+  //     });
+  //     // console.log("uploadMeal Data", res);
+  //     notifySuccess("🦄 Your item add Successfully");
+  //     // Reset fields after success
+  //     setMealCategory(""); // Reset mealCategory state
+  //     setMealDescription(""); // Reset mealDescription state
+  //     setMealPrice(""); // Reset mealPrice state
+  //     setId(""); // Reset meal_id state
+  //     setMealTitle(""); // Reset mealTitle state
+  //     setMealImage(null); // Reset mealImage state (assuming it's a file input)
+  //   } catch (error) {
+  //     // console.log("error", error);
+  //     notifyError("🦄 Something went wrong!");
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
   const addProduct = async (e) => {
     e.preventDefault();
     if (
@@ -74,43 +128,27 @@ const UploadMeal = () => {
       return;
     }
     setIsLoading(true);
-    let mealData = {
-      mealCategory,
-      mealDescription,
-      mealImage,
-      mealPrice,
-      meal_id,
-      mealTitle,
-    };
-    // console.log("mealData", mealData);
+
+    const formData = new FormData();
+    formData.append("mealCategory", mealCategory);
+    formData.append("mealTitle", mealTitle);
+    formData.append("mealDescription", mealDescription);
+    formData.append("mealPrice", mealPrice);
+    formData.append("meal_id", meal_id);
+    formData.append("image", mealImage);
     try {
-      const res = await axios.post(
-        `${BASE_URL}/meal`,
-        {
-          mealCategory: mealCategory,
-          mealDescription: mealDescription,
-          image: mealImage,
-          mealPrice: mealPrice,
-          meal_id: meal_id,
-          mealTitle: mealTitle,
-        },
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-      // console.log("uploadMeal Data", res);
-      notifySuccess("🦄 Your item add Successfully");
-      // Reset fields after success
-      setMealCategory(""); // Reset mealCategory state
-      setMealDescription(""); // Reset mealDescription state
-      setMealPrice(""); // Reset mealPrice state
-      setId(""); // Reset meal_id state
-      setMealTitle(""); // Reset mealTitle state
-      setMealImage(null); // Reset mealImage state (assuming it's a file input)
+      const res = await axios.post(`${BASE_URL}/meal`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      notifySuccess("🦄 Your item added successfully");
+      setMealCategory("");
+      setMealDescription("");
+      setMealPrice("");
+      setMeal_id(""); // Reset correctly
+      setMealTitle("");
+      setMealImage(null);
     } catch (error) {
-      // console.log("error", error);
+      console.log("Upload Meal Error", error.response);
       notifyError("🦄 Something went wrong!");
     } finally {
       setIsLoading(false);
@@ -162,7 +200,7 @@ const UploadMeal = () => {
     const formData = new FormData();
     formData.append("mealCategory", mealCategory);
     formData.append("mealDescription", mealDescription);
-    formData.append("image", mealImage);
+    // formData.append("image", mealImage);
     formData.append("mealPrice", mealPrice);
     formData.append("meal_id", meal_id);
     formData.append("mealTitle", mealTitle);

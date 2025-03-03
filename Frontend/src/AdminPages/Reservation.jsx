@@ -136,7 +136,7 @@ const Reservation = () => {
   const filteredReservations = reservations.filter((reservation) =>
     reservation.fullName.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
+  let subTotal = 0;
   return (
     <>
       {/* Are you sure modal */}
@@ -291,6 +291,9 @@ const Reservation = () => {
                     <th scope="col">Phone No.</th>
                     <th scope="col">Ocassion</th>
                     <th scope="col">Size</th>
+                    <th scope="col">Meal</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
                     <th scope="col">Date</th>
                     <th scope="col">Day</th>
                     <th scope="col">Time</th>
@@ -310,6 +313,43 @@ const Reservation = () => {
                         <td className="pt-3">{reservation.phoneNumber}</td>
                         <td className="pt-3">{reservation.occassion}</td>
                         <td className="pt-3">{reservation.partySize}</td>
+
+                        <td className="pt-3">
+                          {reservation.ReservationMeal.map((e, i) => {
+                            return (
+                              <div key={i}>
+                                {e.mealName}
+                                <hr
+                                  style={{
+                                    border: "0.5px solid #ccc",
+                                    margin: "5px 0",
+                                  }}
+                                />
+                              </div>
+                            );
+                          })}
+                        </td>
+                        <td className="pt-3 text-center">
+                          {reservation.ReservationMeal.map((e, i) => {
+                            return (
+                              <div key={i}>
+                                {e.count}
+                                <hr
+                                  style={{
+                                    border: "0.5px solid #ccc",
+                                    margin: "5px 0",
+                                  }}
+                                />
+                              </div>
+                            );
+                          })}
+                        </td>
+                        <td className="pt-3">
+                          {reservation.ReservationMeal.reduce((subTotal, e) => {
+                            return subTotal + e.Price * e.count;
+                          }, 0)}
+                          $
+                        </td>
                         <td className="pt-3">{reservation.ReservationDate}</td>
                         <td className="pt-3">{reservation.ReservationDay}</td>
                         <td className="pt-3">{reservation.ReservationTime}</td>
@@ -322,33 +362,11 @@ const Reservation = () => {
                           </button>
                           <button
                             onClick={() => rejectReservation(reservation._id)}
-                            className="btn btn-danger ms-1"
+                            className="btn btn-danger mt-2"
                           >
                             Rejected
                           </button>
                         </td>
-                        {/* <td className="pt-2">
-                          {" "}
-                          <button
-                            onClick={() =>
-                              setIdForDeleteReservation(reservation._id)
-                            }
-                            style={{
-                              display: "inline-flex",
-                              justifyContent: "center",
-                              alignItems: "center",
-                              border: "1px solid red",
-                              borderRadius: "50%",
-                              height: "40px", // Same fixed height
-                              width: "40px", // Same fixed width
-                              backgroundColor: "transparent", // No background
-                              cursor: "pointer", // Pointer cursor for a button
-                              marginLeft: "10px", // Add some spacing between the buttons
-                            }}
-                          >
-                            <DeleteIcon className="text-danger" />
-                          </button>
-                        </td> */}
                       </tr>
                     );
                   })}
