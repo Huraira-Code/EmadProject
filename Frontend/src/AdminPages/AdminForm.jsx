@@ -14,6 +14,7 @@ export default function AdminForm() {
 
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const notifyFieldsError = (error) =>
     toast.error(error, {
@@ -56,6 +57,7 @@ export default function AdminForm() {
         });
         // console.log(response, "adminLogin");
         if (response) {
+          setIsLoading(true);
           localStorage.setItem("uid", email);
           navigate("/adminPortal/welcome");
         }
@@ -164,7 +166,13 @@ export default function AdminForm() {
                   className="btn btn-outline-light px-5 fs-5 fw-bold border-2"
                   type="submit"
                 >
-                  Log In <LoginIcon />
+                  {isLoading ? (
+                    <CircularProgress size={24} color="inherit" />
+                  ) : (
+                    <>
+                      Log In <LoginIcon />
+                    </>
+                  )}
                 </button>
               </Grid>
             </Grid>
