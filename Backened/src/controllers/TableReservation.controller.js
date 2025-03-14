@@ -102,45 +102,6 @@ const DelTableData = asyncHandler(async (req, res) => {
   }
 });
 
-// // Accepted and Rejected Reservation
-// const Reservation = asyncHandler(async (req, res) => {
-//   const { status } = req.body;
-//   const { id } = req.params;
-//   try {
-//     if (!id) {
-//       throw new ApiError(400, "Id Not found... ...");
-//     }
-//     // finding the data from table
-//     const findData = await Table.findOne({ _id: id });
-//     //sending data to the Accepted/Rejected Reservation
-//     const ReservationStatus = await Data.create({
-//       ReservationDate: findData.ReservationDate,
-//       ReservationDay: findData.ReservationDay,
-//       ReservationTime: findData.ReservationTime,
-//       email: findData.email,
-//       fullName: findData.fullName,
-//       occassion: findData.occassion,
-//       partySize: findData.partySize,
-//       partySize: findData.partySize,
-//       phoneNumber: findData.phoneNumber,
-//       request: findData.request,
-//       status: status,
-//     });
-//     //now delete from Table
-//     await Table.findByIdAndDelete({ _id: id });
-//     return res
-//       .status(201)
-//       .json(
-//         new ApiResponse(
-//           200,
-//           ReservationStatus,
-//           "Tabale data send Successfully to Accepted Reservation and deleted from tableReservation..."
-//         )
-//       );
-//   } catch (error) {
-//     throw new ApiError(500, error);
-//   }
-// });
 const Reservation = asyncHandler(async (req, res, next) => {
   const { status } = req.body; // Accepted/Rejected status
   const { id } = req.params; // ID of the table reservation

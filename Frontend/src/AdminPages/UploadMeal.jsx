@@ -128,6 +128,7 @@ const UploadMeal = () => {
       return;
     }
     setIsLoading(true);
+    // console.log(mealImage, "image");
 
     const formData = new FormData();
     formData.append("mealCategory", mealCategory);
@@ -136,6 +137,7 @@ const UploadMeal = () => {
     formData.append("mealPrice", mealPrice);
     formData.append("meal_id", meal_id);
     formData.append("image", mealImage);
+
     try {
       const res = await axios.post(`${BASE_URL}/meal`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
@@ -146,9 +148,10 @@ const UploadMeal = () => {
       setMealPrice("");
       setMeal_id(""); // Reset correctly
       setMealTitle("");
-      setMealImage(null);
+      setMealImage("");
+      setMeal(!meal);
     } catch (error) {
-      console.log("Upload Meal Error", error.response);
+      // console.log("Upload Meal Error", error.response);
       notifyError("🦄 Something went wrong!");
     } finally {
       setIsLoading(false);
@@ -176,6 +179,8 @@ const UploadMeal = () => {
     setMealDescription(meal.Description);
     setMealPrice(meal.Price);
     setMeal_id(meal.meal_id);
+    // console.log(meal.image, "mealImage");
+
     setMealImage(meal.image);
     setId(meal._id);
     setUpdateMeal(true);
@@ -200,7 +205,7 @@ const UploadMeal = () => {
     const formData = new FormData();
     formData.append("mealCategory", mealCategory);
     formData.append("mealDescription", mealDescription);
-    // formData.append("image", mealImage);
+    formData.append("image", mealImage);
     formData.append("mealPrice", mealPrice);
     formData.append("meal_id", meal_id);
     formData.append("mealTitle", mealTitle);
@@ -833,9 +838,10 @@ const UploadMeal = () => {
                 <thead>
                   <tr className="jacques-francois-shadow-regular fs-5">
                     <th scope="col">#</th>
-                    <th scope="col">Item Image</th>
+                    <th scope="col"> Image</th>
                     <th scope="col">Item Name</th>
-                    <th scope="col">Category Name</th>
+                    <th scope="col">Category </th>
+                    <th scope="col">Price</th>
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
                   </tr>
@@ -859,6 +865,9 @@ const UploadMeal = () => {
                         </td>
                         <td className="pt-4">
                           {e?.meal_category ? e?.meal_category : "None"}
+                        </td>
+                        <td className="pt-4">
+                          {e?.Price ? e?.Price : "None"} $
                         </td>
                         <td className="pt-4">
                           {" "}
@@ -892,6 +901,7 @@ const UploadMeal = () => {
                               width: "40px", // Same fixed width
                               backgroundColor: "transparent", // No background
                               cursor: "pointer", // Pointer cursor for a button
+                              marginBottom: "2px",
                             }}
                             onClick={() => openEditModal(e)}
                           >
@@ -909,7 +919,7 @@ const UploadMeal = () => {
                               width: "40px", // Same fixed width
                               backgroundColor: "transparent", // No background
                               cursor: "pointer", // Pointer cursor for a button
-                              marginLeft: "10px", // Add some spacing between the buttons
+                              // Add some spacing between the buttons
                             }}
                             onClick={() => confirmDelete(e._id)}
                           >

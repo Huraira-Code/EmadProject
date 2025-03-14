@@ -15,7 +15,7 @@ const Home = () => {
       <Welcome />
       <PopularDish />
       <PopularMenu />
-      <CardComponent />
+      {/* <CardComponent /> */}
       <PopularChef />
       <Hungry />
       <Footer />

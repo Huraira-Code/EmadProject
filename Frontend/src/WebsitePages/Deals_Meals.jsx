@@ -3,6 +3,8 @@ import { fetchProduct } from "../Store/ProductSlice";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { BASE_URL } from "../Base_URL/BASE_URL";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Modal, ModalBody, ModalHeader } from "reactstrap";
 import {
   addCartToReservatioin,
@@ -21,8 +23,31 @@ const Deals_Meals = ({
   size,
   day,
 }) => {
-  console.log(date, time, size, day, secondModal, "new data");
+  // console.log(date, time, size, day, secondModal, "new data");
   // const navigate = useNavigate();
+  const notifySuccess = (success) =>
+    toast.success(success, {
+      position: "bottom-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+
+  const notifyError = (error) =>
+    toast.error(error, {
+      position: "bottom-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
   const dispatch = useDispatch();
   const { ReservationCart } = useSelector(
     (state) => state.ReservationCartReducer
@@ -41,7 +66,7 @@ const Deals_Meals = ({
   const getDeal = async () => {
     try {
       const res = await axios.get(`${BASE_URL}/getDeal`);
-      console.log("get deal", res.data.data);
+      // console.log("get deal", res.data.data);
       setData(res.data.data);
     } catch (error) {
       console.error("Error fetching deals:", error);
@@ -222,9 +247,14 @@ const Deals_Meals = ({
                             </h3>
                             <button
                               className="button"
-                              onClick={() =>
-                                dispatch(addCartToReservatioin(product))
-                              }
+                              onClick={() => {
+                                try {
+                                  dispatch(addCartToReservatioin(product));
+                                  notifySuccess("Item added successfully");
+                                } catch (error) {
+                                  notifyError("Something went wrong");
+                                }
+                              }}
                             >
                               Add To Cart
                             </button>
@@ -263,11 +293,19 @@ const Deals_Meals = ({
                       ))}
                       <h5 className="text-dark">
                         Rs :{" "}
-                        <span className="fw-bold fs-4">{deal.dealPrice}</span>
+                        <span className="fw-bold fs-4">{deal.dealPrice} $</span>
                       </h5>
                       <button
                         className="UButton mt-2"
-                        onClick={() => dispatch(addCartToReservatioin(deal))}
+                        // onClick={() => dispatch(addCartToReservatioin(deal))}
+                        onClick={() => {
+                          try {
+                            dispatch(addCartToReservatioin(deal));
+                            notifySuccess("Item added successfully");
+                          } catch (error) {
+                            notifyError("Something went wrong");
+                          }
+                        }}
                       >
                         Add To Cart
                       </button>
@@ -290,6 +328,18 @@ const Deals_Meals = ({
           setModal={setSecondModal}
         />
       )}
+      <ToastContainer
+        position="bottom-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </>
   );
 };

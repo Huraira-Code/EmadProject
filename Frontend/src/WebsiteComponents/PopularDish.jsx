@@ -1,5 +1,6 @@
 import React from "react";
 import Popular from "../Images/Popular.png";
+import chinese from "../Images/chinese3.webp";
 import { useNavigate } from "react-router-dom";
 
 const PopularDish = () => {
@@ -7,45 +8,6 @@ const PopularDish = () => {
 
   return (
     <>
-      {/* <div className="container" style={{ marginTop: "200px" }}>
-        <section className="row">
-          <div className="col-12 col-md-6" data-aos="fade-right">
-            <div>
-              <img src={Popular} height={450} width={450} alt="" />
-            </div>
-          </div>
-          <div className="col-12 col-md-6 ps-3" data-aos="fade-left">
-            <div>
-              <h1
-                className="jacques-francois-shadow-regular"
-                style={{ fontSize: "70px" }}
-              >
-                Our Most Popular Dish
-              </h1>
-              <p
-                style={{
-                  fontSize: "20px",
-                  lineHeight: "40px",
-                  paddingTop: "20px",
-                }}
-              >
-                This dish is full of flavor and nutrition! Quinoa is a complete
-                protein, providing all the essential amino acids your body
-                needs, and is also a good source of fiber.
-              </p>
-              <div>
-                <button
-                  className="button dancing-script"
-                  style={{ fontSize: "25px", marginTop: "20px" }}
-                  onClick={() => navigate("/menu")}
-                >
-                  Order Now
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div> */}
       <div className="container mt-5">
         <section className="row align-items-center text-center text-md-start">
           {/* Image Section */}
@@ -54,10 +16,13 @@ const PopularDish = () => {
             data-aos="fade-right"
           >
             <img
-              src={Popular}
-              className="img-fluid"
+              src={chinese}
+              className="img-fluid rounded-circle"
               alt="Popular Dish"
-              style={{ maxWidth: "100%", height: "auto" }}
+              style={{
+                maxWidth: "100%",
+                height: "auto",
+              }}
             />
           </div>
 
@@ -70,9 +35,14 @@ const PopularDish = () => {
               Our Most Popular Dish
             </h1>
             <p className="fs-5 pt-3">
-              This dish is full of flavor and nutrition! Quinoa is a complete
-              protein, providing all the essential amino acids your body needs,
-              and is also a good source of fiber.
+              Takeout-Style Kung Pao Chicken is a beloved Chinese-American dish
+              known for its bold, spicy, and slightly sweet flavors. It features
+              tender, diced chicken stir-fried with crunchy peanuts, bell
+              peppers, and dried chili peppers in a rich, savory-sweet sauce
+              made with soy sauce, hoisin, and Sichuan peppercorns. This dish is
+              famous for its perfect balance of heat, nuttiness, and umami,
+              making it a favorite in both restaurants and home kitchens
+              worldwide.
             </p>
             <button
               className="button dancing-script"

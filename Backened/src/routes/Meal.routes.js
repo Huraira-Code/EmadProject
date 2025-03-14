@@ -10,16 +10,15 @@ import {
 const router = Router();
 
 //Integrated On Frontend UploadMeal.jsx Component
-router
-  .route("/meal")
-  .post(upload.fields([{ name: "image", maxCount: 1 }]), MealCard);
-
+// router
+//   .route("/meal")
+//   .post(upload.fields([{ name: "image", maxCount: 1 }]), MealCard);
+router.route("/meal").post(upload.single("image"), MealCard);
+// router.route("/meal").post(MealCard);
 //Integrated On Frontend UploadMeal.jsx Component
 router.route("/getMeal").get(GetMealCard);
 //Integrated On Frontend UploadMeal.jsx Component
-router
-  .route("  ")
-  .put(upload.fields([{ name: "image", maxCount: 1 }]), UpdateMealCard);
+router.route("/updateMeal/:id").put(upload.single("image"), UpdateMealCard);
 //Integrated On Frontend UploadMeal.jsx Component
 router.route("/delMeal/:id").delete(DeleteMealCard);
 export default router;

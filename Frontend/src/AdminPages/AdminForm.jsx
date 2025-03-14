@@ -2,7 +2,7 @@ import * as React from "react";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import { useNavigate } from "react-router-dom";
-import { Card, CardContent } from "@mui/material";
+import { Card, CardContent, CircularProgress } from "@mui/material";
 // import { ToastContainer } from "react-toastify";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -49,6 +49,7 @@ export default function AdminForm() {
         email: email,
         password: password,
       };
+      setIsLoading(true);
       // console.log(adminData, "adminData");
       try {
         const response = await axios.post(`${BASE_URL}/login`, {
@@ -57,13 +58,14 @@ export default function AdminForm() {
         });
         // console.log(response, "adminLogin");
         if (response) {
-          setIsLoading(true);
           localStorage.setItem("uid", email);
           navigate("/adminPortal/welcome");
         }
       } catch (error) {
         // console.log(error.message);
         notifyInvalidError(error.message);
+      } finally {
+        setIsLoading(false);
       }
     }
   };
@@ -99,7 +101,7 @@ export default function AdminForm() {
           >
             Restaurant Admin
           </h1>
-          <form onSubmit={handleSubmit}>
+          <form>
             <Grid container spacing={2}>
               <Grid xs={12} item>
                 <TextField
@@ -164,7 +166,8 @@ export default function AdminForm() {
               >
                 <button
                   className="btn btn-outline-light px-5 fs-5 fw-bold border-2"
-                  type="submit"
+                  onClick={handleSubmit} // Call handleSubmit on click
+                  disabled={isLoading} // Disable button while loading
                 >
                   {isLoading ? (
                     <CircularProgress size={24} color="inherit" />

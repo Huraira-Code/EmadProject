@@ -157,7 +157,7 @@ const GetTransfer = asyncHandler(async (req, res) => {
 });
 const paymentMethod = asyncHandler(async (req, res) => {
   const { products } = req.body;
-  console.log(products);
+  // console.log(products);
   const lineItems = products.map((prd) => ({
     price_data: {
       currency: "usd",

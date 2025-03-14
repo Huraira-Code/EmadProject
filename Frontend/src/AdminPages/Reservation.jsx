@@ -49,7 +49,7 @@ const Reservation = () => {
   const getReservations = async () => {
     try {
       const res = await axios.get(`${BASE_URL}/getTableData`);
-      console.log("getReservation", res.data.data);
+      // console.log("getReservation", res.data.data);
       setReservations(res.data.data);
     } catch (error) {
       // console.log("error", error);
@@ -318,7 +318,7 @@ const Reservation = () => {
                           {reservation.ReservationMeal.map((e, i) => {
                             return (
                               <div key={i}>
-                                {e.mealName}
+                                {e.mealName ?? e.dealTitle}
                                 <hr
                                   style={{
                                     border: "0.5px solid #ccc",
@@ -344,9 +344,17 @@ const Reservation = () => {
                             );
                           })}
                         </td>
+                        {/* <td className="pt-3">
+                          {reservation.ReservationMeal.reduce((subTotal, e) => {
+                            return subTotal + e.Price ?? e.dealPrice * e.count;
+                          }, 0)}
+                          $
+                        </td> */}
                         <td className="pt-3">
                           {reservation.ReservationMeal.reduce((subTotal, e) => {
-                            return subTotal + e.Price * e.count;
+                            return (
+                              subTotal + (e.Price ?? e.dealPrice) * e.count
+                            );
                           }, 0)}
                           $
                         </td>

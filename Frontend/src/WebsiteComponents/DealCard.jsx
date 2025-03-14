@@ -9,7 +9,7 @@ const DealCard = () => {
   const [data, setData] = useState([]);
   const getDeal = async () => {
     const res = await axios.get(`${BASE_URL}/getDeal`);
-    console.log("get deal", res.data.data);
+    // console.log("get deal", res.data.data);
     setData(res.data.data);
   };
   useEffect(() => {
@@ -46,7 +46,7 @@ const DealCard = () => {
         {data.map((deal, id) => (
           <div
             key={id}
-            className="col-12 col-sm-6 col-md-4 text-center text-white jacques-francois-shadow-regular"
+            className="col-12 col-sm-6 col-md-4 text-center text-white jacques-francois-shadow-regular mt-2"
           >
             <h5
               style={{
@@ -67,7 +67,7 @@ const DealCard = () => {
                 <h5 key={i}>{e}</h5>
               ))}
               <h5 className="text-dark">
-                Rs : <span className="fw-bold fs-4">{deal.dealPrice}</span>
+                Rs : <span className="fw-bold fs-4">{deal.dealPrice} $</span>
               </h5>
               <button
                 // className="btn btn-outline-light bg-dark fs-5 mt-2"

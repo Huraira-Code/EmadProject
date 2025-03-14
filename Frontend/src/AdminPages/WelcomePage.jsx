@@ -9,42 +9,6 @@ const WelcomePage = () => {
     navigate("/adminPortal/items");
   }, 5000);
   return (
-    // <Box
-    //   sx={{
-    //     display: "flex",
-    //     flexDirection: "column",
-    //     alignItems: "center",
-    //     justifyContent: "center",
-    //     height: "100vh",
-    //     textAlign: "center",
-    //     backgroundColor: "rgb(295, 150, 0)",
-    //     color: "black",
-    //     padding: 3,
-    //   }}
-    // >
-    //   <Typography
-    //     variant="h2"
-    //     component="h1"
-    //     gutterBottom
-    //     className="jacques-francois-shadow-regular"
-    //   >
-    //     Welcome to the Society Portal
-    //   </Typography>
-    //   <Typography
-    //     variant="h5"
-    //     component="p"
-    //     className="jacques-francois-shadow-regular"
-    //   >
-    //     Manage your restaurant efficiently and effectively.
-    //   </Typography>
-    //   <Typography
-    //     variant="h5"
-    //     component="p"
-    //     className="jacques-francois-shadow-regular"
-    //   >
-    //     You will redirecting to the dashboard in a few seconds...
-    //   </Typography>
-    // </Box>
     <div
       className="jacques-francois-shadow-regular"
       style={{

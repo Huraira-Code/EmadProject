@@ -10,7 +10,7 @@ const AcceptedOrder = asyncHandler(async (req, res) => {
     const { id } = req.params;
     // Fetch the order details by ID
     const AccOrder = await Checkout.findById(id);
-    console.log("AccOrder", AccOrder);
+    // console.log("AccOrder", AccOrder);
 
     // Error handling if order is not found
     if (!AccOrder) {

@@ -48,24 +48,6 @@ const CardComponent = ({ selectedCategory }) => {
       return false; // Handle the error by returning false or handle it accordingly
     }
   });
-  // const filterProducts = allProduct?.filter((e) => {
-  //   try {
-  //     if (!selectedCategory || selectedCategory === "All") {
-  //       return true; // Show all products if no category is selected
-  //     } else if (Array.isArray(e.meal_category)) {
-  //       return e.meal_category.some(
-  //         (category) =>
-  //           category.toLowerCase() === selectedCategory.toLowerCase()
-  //       );
-  //     } else if (typeof e.meal_category === "string") {
-  //       return e.meal_category.toLowerCase() === selectedCategory.toLowerCase();
-  //     }
-  //     return false; // If meal_category is not a string or array, skip this item
-  //   } catch (error) {
-  //     console.log(error);
-  //     return false;
-  //   }
-  // });
 
   useEffect(() => {
     dispatch(fetchProduct());

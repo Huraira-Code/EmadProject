@@ -54,7 +54,7 @@ const TotalOrders = () => {
   const getOrders = async () => {
     try {
       const res = await axios.get(`${BASE_URL}/getcheckout`);
-      console.log("get_Order", res.data.data);
+      // console.log("get_Order", res.data.data);
       setMeal(res.data.data);
     } catch (error) {
       notifyError(error.message);

@@ -8,10 +8,11 @@ import axios from "axios";
 import { BASE_URL } from "../Base_URL/BASE_URL";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { clearReservationCart } from "../Store/ReservationCart";
 
 const ReservationData = ({ modal, setModal, date, time, size, day }) => {
-  console.log(date, day, time, modal, setModal, "reservation data");
+  // console.log(date, day, time, modal, setModal, "reservation data");
   const { ReservationCart } = useSelector(
     (state) => state.ReservationCartReducer
   );
@@ -51,7 +52,7 @@ const ReservationData = ({ modal, setModal, date, time, size, day }) => {
       progress: undefined,
       theme: "colored",
     });
-
+  const dispatch = useDispatch();
   const Confirmation = (e) => {
     e.preventDefault();
 
@@ -89,6 +90,7 @@ const ReservationData = ({ modal, setModal, date, time, size, day }) => {
       // console.log("res==>", res);
       notifySuccess("Reservation completed successfully!");
       notifySuccess("Accepted or rejected email will be sent to you shortly.");
+      dispatch(clearReservationCart());
       navigate("/");
       // Clear fields on success
       setFullName("");

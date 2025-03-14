@@ -79,13 +79,10 @@ const CheckoutForm = () => {
         message,
         paymentMethod: selectedValue,
         orderItems: addToCart.map((orderItem) => ({
-          id: orderItem.meal_id,
+          id: orderItem.meal_id ?? orderItem.deal_id,
           quantity: orderItem.count,
-          title: orderItem.mealName,
-          price: orderItem.Price,
-
-          // abhi jo api lgi hwe hy usmy price nhi hy
-          // price: orderItem.price,
+          title: orderItem.mealName ?? orderItem.dealTitle,
+          price: orderItem.Price ?? orderItem.dealPrice,
         })),
       };
 
@@ -102,8 +99,8 @@ const CheckoutForm = () => {
         paymentMethod: selectedValue,
         orderItems: addToCart.map((orderItem) => ({
           quantity: orderItem.count,
-          title: orderItem.mealName,
-          price: orderItem.Price,
+          title: orderItem.mealName ?? orderItem.dealTitle,
+          price: orderItem.Price ?? orderItem.dealPrice,
         })),
       });
 

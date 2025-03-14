@@ -10,7 +10,8 @@ const initialState = {
 
 const options = {
   method: "GET",
-  url: "https://savory-bite-restaurant.vercel.app/api/v1/getMeal",
+  // url: "https://savory-bite-restaurant.vercel.app/api/v1/getMeal",
+  url: "http://localhost:5005/api/v1/getMeal",
 };
 
 export const fetchProduct = createAsyncThunk(
@@ -18,10 +19,10 @@ export const fetchProduct = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.request(options);
-      console.log("API Response:", response.data.data); // Log the response
+      // console.log("API Response:", response.data.data); // Log the response
       return response.data.data; // Ensure the response is an array
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
       return rejectWithValue(error.message);
     }
   }
@@ -47,18 +48,18 @@ const productSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchProduct.pending, (state) => {
       state.isLoading = true;
-      console.log("pending");
+      // console.log("pending");
     });
     builder.addCase(fetchProduct.fulfilled, (state, action) => {
       state.isLoading = false;
       state.allProduct = action.payload;
-      console.log("fulfilled", action.payload);
+      // console.log("fulfilled", action.payload);
     });
     builder.addCase(fetchProduct.rejected, (state) => {
       state.isLoading = false;
       state.allProduct = [];
       state.error = true;
-      console.log("rejected");
+      // console.log("rejected");
     });
   },
 });

@@ -9,7 +9,7 @@ const Menu = () => {
     <div>
       <Navbar />
       <PopularMenu />
-      <CardComponent />
+      {/* <CardComponent /> */}
       <Footer />
     </div>
   );

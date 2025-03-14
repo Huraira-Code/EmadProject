@@ -12,7 +12,7 @@ import {
 import logo2 from "../Images/logo.png";
 const Navbar = () => {
   const { addToCart } = useSelector((state) => state.addToCartReducer);
-  console.log(addToCart, "Navbar");
+  // console.log(addToCart, "Navbar");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -20,101 +20,6 @@ const Navbar = () => {
   const stock = 12;
   return (
     <>
-      {/* <Modal size="md" isOpen={cart} toggle={() => setCart(!cart)}>
-        <ModalHeader toggle={() => setCart(!cart)}>
-          <h1
-            className="jacques-francois-shadow-regular"
-            style={{ color: "rgb(295, 150, 0)" }}
-          >
-            Order Detail
-          </h1>
-        </ModalHeader>
-        <ModalBody>
-          {addToCart.length !== 0 ? (
-            addToCart.map((data, index) => {
-              // console.log(addToCart, "data");
-              console.log(data.dealTitle, "data");
-
-              return (
-                <>
-                  <div className="container" key={index}>
-                    <section className="row">
-                      <div className="col-12 col-md-6 mt-3">
-                        <div>
-                          <img
-                            src={data.image}
-                            width={200}
-                            height={180}
-                            alt={data.mealName}
-                            style={{
-                              borderRadius: "40px",
-                            }}
-                          />
-                        </div>
-                      </div>
-                      <div className="col-12 col-md-6 mt-3">
-                        <div>
-                          <h4 className="jacques-francois-shadow-regular text-center">
-                            {data.mealName
-                              ? data.mealName
-                              : `Deal No # ${data.dealNumber}`}
-                          </h4>
-
-                          <div>
-                            <h5 className="pt-1 text-center fw-bold">
-                              {data.count}
-                              <span className="fs-5 fw-light"> X</span>{" "}
-                              {data.Price || data.dealPrice}$ ={" "}
-                              {data.Price || data.dealPrice * data.count}$
-                            </h5>
-                          </div>
-                          <div className="text-center">
-                            <button
-                              className=" button"
-                              onClick={() => {
-                                data.count > 1
-                                  ? dispatch(cartDecrement(data._id))
-                                  : dispatch(removeAddToCart(data));
-                              }}
-                            >
-                              -
-                            </button>
-                            <button
-                              className="ms-3 button"
-                              onClick={() => {
-                                data.count < stock
-                                  ? dispatch(cartIncrement(data._id))
-                                  : setCount(stock);
-                              }}
-                            >
-                              +
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </>
-              );
-            })
-          ) : (
-            <h1
-              className="d-flex justify-content-center align-items-center jacques-francois-shadow-regular "
-              style={{ color: "grey", margin: "80px 0px 80px 0px" }}
-            >
-              Your Cart is Empty
-            </h1>
-          )}
-
-          {addToCart.length !== 0 && (
-            <div className="d-flex justify-content-center align-items-center mt-5">
-              <button className="button" onClick={() => navigate("/checkout")}>
-                Checkout
-              </button>
-            </div>
-          )}
-        </ModalBody>
-      </Modal> */}
       <Modal size="md" isOpen={cart} toggle={() => setCart(!cart)}>
         <ModalHeader toggle={() => setCart(!cart)}>
           <h1
@@ -300,10 +205,6 @@ const Navbar = () => {
                   <ShoppingCartIcon />
                   Cart ({addToCart.length})
                 </button>
-                {/* <button className="button ms-2">
-                  <LoginIcon />
-                  login
-                </button> */}
               </div>
             </div>
           </div>

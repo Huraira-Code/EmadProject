@@ -5,7 +5,7 @@ import { BASE_URL } from "../Base_URL/BASE_URL";
 const AcceptedAndRejectedReservation = () => {
   const [loading, setLoading] = useState();
   const [allOrder, setAllOrder] = useState();
-  console.log(allOrder);
+  // console.log(allOrder);
 
   const getReservation = async () => {
     setLoading(true);

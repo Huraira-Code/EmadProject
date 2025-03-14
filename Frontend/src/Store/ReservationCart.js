@@ -16,7 +16,7 @@ const ReservationSlice = createSlice({
       );
       // console.log(p.id);
 
-      console.log("this is existing product index", existingProductIndex);
+      // console.log("this is existing product index", existingProductIndex);
       if (existingProductIndex === -1) {
         // If the product is not in the cart, add it with count = 1
         state.ReservationCart.push({ ...action.payload, count: 1 });

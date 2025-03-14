@@ -3,7 +3,7 @@ import CardComponent from "./CardComponent";
 
 const PopularMenu = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
-  console.log(selectedCategory, "--->category");
+  // console.log(selectedCategory, "--->category");
 
   return (
     <div className="container mt-5">

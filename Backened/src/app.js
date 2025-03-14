@@ -2,13 +2,13 @@ import express, { urlencoded } from "express";
 import cors from "cors";
 
 const app = express();
-import connectDatabase from "./db/DB.js"; // Import the MongoDB connection
-connectDatabase();
+// import connectDatabase from "./db/DB.js"; // Import the MongoDB connection
+// connectDatabase();
 
 // Default route to welcome users
-app.get("/", (req, res) => {
-  res.status(200).send("Welcome to Restaurant");
-});
+// app.get("/", (req, res) => {
+//   res.status(200).send("Welcome to Restaurant");
+// });
 app.use(express.json({ limit: "16kb" }));
 app.use(urlencoded({ extended: true, limit: "16kb" }));
 app.use(express.static("public"));

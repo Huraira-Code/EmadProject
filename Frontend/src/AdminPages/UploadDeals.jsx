@@ -86,7 +86,7 @@ const UploadDeals = () => {
       dealPrice,
       deal_id,
     };
-    console.log("dealData", dealData);
+    // console.log("dealData", dealData);
     try {
       const res = await axios.post(
         `${BASE_URL}/deal`,
@@ -114,6 +114,7 @@ const UploadDeals = () => {
       setDealPrice("");
       setDealTitle("");
       setId("");
+      setDeals(!deals);
     } catch (error) {
       // console.log("error", error);
       notifyError("🦄 Something went wrong while uploading the deal!");
@@ -125,7 +126,7 @@ const UploadDeals = () => {
   //Get Deal Function
   const getDeal = async () => {
     const res = await axios.get(`${BASE_URL}/getDeal`);
-    console.log("getUploaded deal", res.data.data);
+    // console.log("getUploaded deal", res.data.data);
     setDealData(res.data.data);
   };
   useEffect(() => {
