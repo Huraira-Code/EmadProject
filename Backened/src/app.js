@@ -13,7 +13,9 @@ app.use(express.json({ limit: "16kb" }));
 app.use(urlencoded({ extended: true, limit: "16kb" }));
 app.use(express.static("public"));
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: 'https://67d634c8807d7dd50ee0abe5--starlit-chimera-b6059b.netlify.app'
+}));
 
 import MealRouter from "./routes/Meal.routes.js";
 import ContactRouter from "./routes/Contact.routes.js";

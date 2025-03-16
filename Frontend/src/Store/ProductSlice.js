@@ -11,7 +11,7 @@ const initialState = {
 const options = {
   method: "GET",
   // url: "https://savory-bite-restaurant.vercel.app/api/v1/getMeal",
-  url: "http://localhost:5005/api/v1/getMeal",
+  url: "https://emad-project.vercel.app/api/v1/getMeal",
 };
 
 export const fetchProduct = createAsyncThunk(
