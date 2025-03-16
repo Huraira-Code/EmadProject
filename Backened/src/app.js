@@ -31,4 +31,4 @@ app.use("/api/v1/", CheckoutRouter);
 app.use("/api/v1/", EmailRouter);
 app.use("/api/v1/", DealRouter);
 
-export { app };
+export default app;
