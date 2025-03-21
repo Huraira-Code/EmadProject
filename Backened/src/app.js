@@ -13,11 +13,12 @@ app.use(express.json({ limit: "16kb" }));
 app.use(urlencoded({ extended: true, limit: "16kb" }));
 app.use(express.static("public"));
 app.use(express.json());
-app.use(cors({
-    origin: '*',
-    credentials:false,            //access-control-allow-credentials:true
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-}));
+app.use(
+  cors({
+    origin: "*", // Allow requests from this origin
+    credentials: true, // Allow sending cookies
+  })
+);
 
 
 import MealRouter from "./routes/Meal.routes.js";
