@@ -14,7 +14,7 @@ app.use(urlencoded({ extended: true, limit: "16kb" }));
 app.use(express.static("public"));
 app.use(express.json());
 app.use(cors({
-    origin: '*',
+    origin: 'https://starlit-chimera-b6059b.netlify.app',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
