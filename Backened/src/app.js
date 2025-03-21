@@ -16,7 +16,6 @@ app.use(express.json());
 app.use(cors({
     origin: 'https://starlit-chimera-b6059b.netlify.app',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 
