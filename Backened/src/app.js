@@ -15,7 +15,7 @@ app.use(express.static("public"));
 app.use(express.json());
 app.use(cors({
     origin: '*',
-    credentials:true,            //access-control-allow-credentials:true
+    credentials:false,            //access-control-allow-credentials:true
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
 
